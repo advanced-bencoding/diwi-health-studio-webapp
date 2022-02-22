@@ -31,4 +31,4 @@ urlpatterns = [
     path('staff/', staff.views.staff,name="staffpage"),
     path('admin/', admin.site.urls),
     path('services/', services_view.services, name='services'),
-]+static (settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+] + static (settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
