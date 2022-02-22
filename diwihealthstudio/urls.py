@@ -22,6 +22,6 @@ from django.conf import settings
 import staff.views
 
 urlpatterns = [
-    path('', staff.views.staff,name="staffpage"),
+    path('staff/', staff.views.staff,name="staffpage"),
     path('admin/', admin.site.urls),
 ]+static (settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
