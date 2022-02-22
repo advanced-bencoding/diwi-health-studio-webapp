@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from services.models import Services
 # Create your views here.
 def home(request):
-    return render(request, 'home/home.html')
+    s = Services.objects
+    return render(request, 'home/home.html', {'s': s})
