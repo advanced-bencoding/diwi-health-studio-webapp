@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 
 <!-- {%for people in workingforce.all%}
         <div class="col">
@@ -11,12 +12,12 @@
           </div>
         </div>
         {% endfor %} -->
-
-        {%for people in workingforce.all%}
-
+        {% block content %}
+        {%for people in workingforce.all%} 
         <div align="center" class="col-lg-4">
         <img class="wdn-stretch rounded-corners" add border-radius="50%" width="140" height="140" src="{{people.image.url}}">
           <h2>{{people.name}}</h2>
           <p>{{people.qualifications}}</p>
         </div>
         {% endfor %}
+        {% endblock %}
