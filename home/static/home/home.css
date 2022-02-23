@@ -1,0 +1,40 @@
+
+#tc1{
+    background-color: rgb(74, 207, 207);
+    color: aliceblue;
+    padding: 15 15 15 15;
+}
+
+#tc2{
+    background-color: rgb(81, 185, 211);
+    color: aliceblue;
+    padding: 15 15 15 15;
+}
+
+#tctl{
+    background-color: rgb(74, 207, 207);
+    color: aliceblue;
+    border-top-left-radius: 15px;
+    padding: 15 15 15 15;
+}
+
+#tctr{
+    background-color: rgb(81, 185, 211);
+    color: aliceblue;
+    border-top-right-radius: 15px;
+    padding: 15 15 15 15;
+}
+
+#tcbl{
+    background-color: rgb(74, 207, 207);
+    color: aliceblue;
+    border-bottom-left-radius: 15px;
+    padding: 15 15 15 15;
+}
+
+#tcbr{
+    background-color: rgb(81, 185, 211);
+    color: aliceblue;
+    border-bottom-right-radius: 15px;
+    padding: 15 15 15 15;
+}

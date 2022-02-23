@@ -1,0 +1,23 @@
+.app_button{
+    background-color: rgb(0, 0, 255);
+    border-radius: 20px;
+}
+
+#w_text{
+    color:  aliceblue;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+#nav_element_spacer{
+    margin-right: 10px;
+}
+
+a:hover{
+    color: blue;
+}
+
+#relative{
+    position: relative;
+}
