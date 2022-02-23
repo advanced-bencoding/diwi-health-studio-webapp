@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 import staff.views
+import blog.views
 from services import views as services_view
 from home import views as home_view
 
@@ -31,5 +32,6 @@ urlpatterns = [
     path('staff/', staff.views.staff,name="staffpage"),
     path('admin/', admin.site.urls),
     path('services/', services_view.services, name='services'),
-    path('blog/', include('blog.urls'))
+    path('blog/', blog.views.all_blogs, name='all_blogs'),
+    path('<int:blog_id>/', blog.views.detail, name='detail'),
 ] + static (settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
