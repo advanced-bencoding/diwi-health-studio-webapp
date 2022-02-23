@@ -6,7 +6,7 @@
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       {% for x in s.all %}
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ x.id }}" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter }}" aria-label="Slide 2"></button>
       {% endfor %}
     </div>
     <div class="carousel-inner">
@@ -28,8 +28,6 @@
       </div>
       {% endfor %}
 
-
-      </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -39,5 +37,47 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>
+  
+  <div class="container mx-auto mt-5" style="width:50%">
+    <h3>Opening Hours</h3>
+    <table class="table table-hover table-borderless mt-5" id="rounded_table">
+      <tr>
+        <th id="tctl">Day</th>
+        <th id="tctr">Timings</th>
+      </tr>
+      <tr>
+        <td id="tc1">Monday</td>
+        <td id="tc2">10am-1pm, 2pm-5pm</td>
+      </tr>
+      <tr>
+        <td id="tc1">Tuesday</td>
+        <td id="tc2">10am-1pm, 2pm-5pm</td>
+      </tr>
+      <tr>
+        <td id="tc1">Wednesday</td>
+        <td id="tc2">10am-1pm, 2pm-5pm</td>
+      </tr>
+      <tr>
+        <td id="tc1">Thursday</td>
+        <td id="tc2">10am-1pm, 2pm-5pm</td>
+      </tr>
+      <tr>
+        <td id="tc1">Friday</td>
+        <td id="tc2">10am-1pm, 2pm-5pm</td>
+      </tr>
+      <tr>
+        <td id="tc1">Saturday</td>
+        <td id="tc2">11am-1pm, 2pm-5pm</td>
+      </tr>
+      <tr>
+        <td id="tcbl">Sunday</td>
+        <td id="tcbr">2pm-5pm</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="container enquiry-form">
+
   </div>
 {% endblock %}
