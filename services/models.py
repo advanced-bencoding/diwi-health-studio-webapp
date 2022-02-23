@@ -16,3 +16,6 @@ class SubService(models.Model):
     title = models.CharField(max_length=50)
     icon = models.ImageField(upload_to='images/subservices')
     service = models.ForeignKey(Services, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
