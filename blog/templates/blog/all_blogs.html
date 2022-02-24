@@ -13,6 +13,7 @@ Hello Blog
 
 <a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
 <h5>{{ blog.date }}</h5>
+<img src="{{ blog.image.url }} ">
 <p>{{ blog.description }}</p>
 
 
