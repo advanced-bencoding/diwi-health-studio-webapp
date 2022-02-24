@@ -1,19 +1,14 @@
-## {% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
 
-
-
-
-Hello Blog
-
 <h2>Dev has written {{ blogs.count }}</h2>
 
-{% for blog in blogs %}
+{% for blog in blogs reversed %}
 
-<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+<a href="{% url 'detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
 <h5>{{ blog.date }}</h5>
-<img src="{{ blog.image.url }} ">
+<img src="{{ blog.image.url }}" width="400px">
 <p>{{ blog.description|truncatechars:100 }}</p>
 
 

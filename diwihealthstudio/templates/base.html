@@ -9,14 +9,14 @@
     <body>
         <nav id="relative" class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-3 px-3">
             <div class="container-fluid">              
-              <a class="navbar-brand" href="#">Diwi Health Studio</a>
+              <a class="navbar-brand" href="{% url 'home' %}">Diwi Health Studio</a>
               <button class="navbar-toggler mx-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
-                  <a class="nav-link" href="#" id="nav_element_spacer">Services</a>
-                  <a class="nav-link" href="#" id="nav_element_spacer">Blog</a>
+                  <a class="nav-link" href="{% url 'services' %}" id="nav_element_spacer">Services</a>
+                  <a class="nav-link" href="{% url 'all_blogs' %}" id="nav_element_spacer">Blog</a>
                   <a class="nav-link" href="#" id="nav_element_spacer">Contact Us</a>
                   <a class="nav-link app_button" href="#" id="w_text">Book An Appointment</a>                                 
                 </div>
