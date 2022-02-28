@@ -38,3 +38,7 @@
     border-bottom-right-radius: 15px;
     padding: 15 15 15 15;
 }
+
+#captionback{
+    background-color: rgba(0,0,0,1);
+}
