@@ -12,16 +12,16 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="{% static 'home\welcome.jpg' %}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h3>Welcome to Diwi Health Studio!</h3>
-          <p>One place to fulfill all your needs.</p>
+        <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.4)">
+            <h3>Welcome to Diwi Health Studio!</h3>
+            <p>One place to fulfill all your needs.</p>
         </div>
       </div>
 
       {% for x in s.all %}
       <div class="carousel-item">
         <img src="{{ x.banner.url }}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.4)">
           <h5>{{ x.title }}</h5>
           <p>{{ x.tagline }}</p>
         </div>
