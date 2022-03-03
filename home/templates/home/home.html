@@ -81,20 +81,34 @@
 
   </div>
 
-  <div class="container row">
+
+  <h3>Services</h3>
+
+  <div class="container-fluid">
     {% for x in s.all %}
-    <div class="col-md-3" style="margin-right: 25px;">
-      <h3>{{ x.title }}</h3>
-        <ul>
-        {% for y in sub.all %}
+    <div class="row my-5">
+      <div class="img img-fluid col-md-6" style="background-image: url('{{ x.thumbnail.url }}');">
 
-        {% if y.service_id == x.id %}
-          <li>{{ y.title }}</li>
-        {% endif %}
-
-        {% endfor %}
-        </ul>
+      </div>
+      <div class="col-md-6" style="background-image: linear-gradient(rgb(81, 185, 211), rgb(74, 207, 207)); color:aliceblue">
+        <div class="container mt-5">
+          <center>
+            <h1>{{ x.title }}</h1>
+          </center> 
+          <ul class="my-5 list-unstyled">
+          {% for y in sub.all %}
+  
+          {% if y.service_id == x.id %}
+            <li><h4>{{ y.title }}</h4></li>
+          {% endif %}
+  
+          {% endfor %}
+          </ul>
+        </div>
+        
+      </div>
     </div>
     {% endfor %}
   </div>
+
 {% endblock %}
