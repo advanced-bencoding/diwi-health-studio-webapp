@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid form-back">
+    <div class="row">
+        <div class="col-3 my-5">
+
+        </div>
+        <div class="col-9 my-5">
+            <div class="form-control" style="padding-right: 5%" id="myform">
+                <h2 class="text-center mt-4">Book An Appointment</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row mt-5">
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <input class ="form-control" type="text" placeholder="First Name*" name="fname">
+                        </div>
+                        <div class="col-5">
+                            <input class ="form-control" type="text" placeholder="Last Name" name="lname">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <input class ="form-control" type="number" placeholder="Age*" name="age">
+                        </div>
+                        <div class="col-5">
+                            <select class="form-select" name="sex">
+                                <option selected disabled>Sex*</option>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <input class ="form-control" type="number" placeholder="Mobile*" name="mobile">
+                        </div>
+                        <div class="col-5">
+                            <input class ="form-control" type="email" placeholder="Email*" name="email">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <input class ="form-control" type="date" placeholder="Appointment Date" name="slot">
+                        </div>
+                        <div class="col-5">
+                            <select class="form-select" name="time">
+                                <option selected>Appointment Time</option>
+                                <option value="1">Morning (8am-1pm)</option>
+                                <option value="2">Afternoon (2pm-5pm)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-2"></div>
+                        <div class="col-5">
+                            <input class ="form-control" type="text" placeholder="??" name="na">
+                        </div>
+                        <div class="col-5">
+                            <select class="form-select" name="service">
+                                <option selected disabled>Service*</option>
+                                <option value="1">Dental Care</option>
+                                <option value="2">Cosmetic Care</option>
+                                <option value="2">Nutritional Care</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-4" style="padding-left: 50%;">
+                        <input class="btn btn-primary" type="submit" value="Book Now" style="height:50px; width:150px; border-radius: 200px;">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
