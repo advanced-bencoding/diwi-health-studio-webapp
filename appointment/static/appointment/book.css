@@ -1,0 +1,9 @@
+.form-back{
+    background-image: linear-gradient(rgb(81, 185, 211), rgb(74, 207, 207));
+    height: 80%;
+}
+
+#myform{
+    border-top-left-radius: 150px;
+    border-bottom-left-radius: 150px;
+}
