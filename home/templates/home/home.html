@@ -21,7 +21,7 @@
       {% for x in s.all %}
       <div class="carousel-item">
         <img src="{{ x.banner.url }}" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block" style="background-color: rgba(0,0,0,0.4)">
+        <div id="captionback" class="carousel-caption d-none d-md-block">
           <h5>{{ x.title }}</h5>
           <p>{{ x.tagline }}</p>
         </div>
@@ -41,7 +41,7 @@
   
   <div class="container mx-auto mt-5" style="width:50%">
     <h3>Opening Hours</h3>
-    <table class="table table-hover table-borderless my-5" id="rounded_table">
+    <table class="table table-hover table-borderless my-5">
       <tr>
         <th id="tctl">Day</th>
         <th id="tctr">Timings</th>
@@ -110,5 +110,33 @@
     </div>
     {% endfor %}
   </div>
+
+  <div class="row">
+
+    {% for staff in staffs.all %}
+
+    <div class="col-xxl-4">
+      <div class="container p-3 staff-card">
+        <div class="row">
+          <div class="col-2">
+            <img src="{{ staff.image.url }}" class="rounded-image" width="100px">
+          </div>
+          <div class="col-10 mt-3">
+            <div class="row text-center">
+              <h4>{{ staff.name }}</h4>
+            </div>
+            <div class="row text-center">
+              <p>{{ staff.qualifications }}</p>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+
+    {% endfor %}
+
+  </div>
+    
+  
 
 {% endblock %}
