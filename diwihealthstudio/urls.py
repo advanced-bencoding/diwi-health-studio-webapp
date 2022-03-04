@@ -24,11 +24,13 @@ from django.conf import settings
 
 import staff.views
 import blog.views
+import appointment.views
 from services import views as services_view
 from home import views as home_view
 
 urlpatterns = [
     path('', home_view.home, name='home'),
+    path('book/', appointment.views.book, name='book'),
     path('staff/', staff.views.staff,name="staffpage"),
     path('admin/', admin.site.urls),
     path('services/', services_view.services, name='services'),
