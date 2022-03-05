@@ -2,6 +2,22 @@
 {% load static %}
 
 {% block content %}
+{% if wrongmno %}
+<div class="alert alert-danger alert-dismissible fade show">
+  <strong>
+    {{wrongmno}}
+    </strong>
+  <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+</div>
+{% endif %} 
+{% if wrongmail %}
+<div class="alert alert-danger alert-dismissible fade show">
+  <strong>
+    {{wrongmail}}
+    </strong>
+  <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+</div>
+{% endif %} 
 
 <div class="container-fluid form-back">
     <div class="row" style="margin-right: 50px;">
@@ -11,7 +27,7 @@
         <div class="col-9 my-5">
             <div class="form-control" style="padding-right: 5%" id="myform">
                 <h2 class="text-center mt-4">Book An Appointment</h2>
-                <form method="POST">
+                <form method="POST" action="{% url 'book' %}" >
                     {% csrf_token %}
                     <div class="row mt-5">
                         <div class="col-2"></div>
@@ -32,6 +48,7 @@
                                 <option selected disabled>Sex*</option>
                                 <option value="m">Male</option>
                                 <option value="f">Female</option>
+                                <option value="o">Other</option>
                             </select>
                         </div>
                     </div>
@@ -47,7 +64,7 @@
                     <div class="row mt-4">
                         <div class="col-2"></div>
                         <div class="col-5">
-                            <input class ="form-control" type="date" placeholder="Appointment Date" name="slot">
+                            <input class ="form-control" type="date" placeholder="Appointment Date" name="date">
                         </div>
                         <div class="col-5">
                             <select class="form-select" name="time">
@@ -64,7 +81,7 @@
                         </div>
                         <div class="col-5">
                             <select class="form-select" name="service">
-                                <option selected disabled>Service*</option>
+                                <option selected disabled >Service*</option>
                                 <option value="1">Dental Care</option>
                                 <option value="2">Cosmetic Care</option>
                                 <option value="2">Nutritional Care</option>
