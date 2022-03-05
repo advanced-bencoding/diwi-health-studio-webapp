@@ -20,6 +20,7 @@
                   {% if user.is_authenticated %}
                   <a class="nav-link" href="{% url 'manage' %}" id="nav_element_spacer">Manage Appointments</a>
                   {% endif %}
+                  <a class="nav-link" href="{% url 'home' %}" id="nav_element_spacer">Home</a>
                   <a class="nav-link" href="{% url 'services' %}" id="nav_element_spacer">Services</a>
                   <a class="nav-link" href="{% url 'all_blogs' %}" id="nav_element_spacer">Blog</a>
                   <a class="nav-link" href="#" id="nav_element_spacer">Contact Us</a>
