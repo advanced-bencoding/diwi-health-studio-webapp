@@ -12,6 +12,7 @@ class Appointment (models.Model):
     time = models.CharField(max_length=100)
     Notes = models.TextField()
     service = models.CharField(max_length=20)
+    status = models.CharField(max_length=10, default='Reject')
 
     def __str__(self) :
         return self.fname + self.lname
