@@ -41,3 +41,7 @@ def book(request):
 @login_required
 def manage(request):
     return render(request, 'appointment/manage.html')
+
+@login_required
+def view(request):
+    return render(request, 'appointment/view.html')
