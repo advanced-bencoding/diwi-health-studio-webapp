@@ -9,11 +9,12 @@ class Appointment (models.Model):
     mobile_no = models.CharField(max_length=13)
     email = models.CharField(max_length=100)
     date = models.DateField()
-    time_start = models.CharField(max_length=100)
-    time_end = models.CharField(max_length=100)
+    time_start = models.CharField(max_length=100, null=True)
+    time_end = models.CharField(max_length=100, null=True)
     Notes = models.TextField()
     service = models.CharField(max_length=20)
-    status = models.CharField(max_length=10, default='Reject')
+    status = models.BooleanField(default=False)
+    verified = models.BooleanField(default=False)
 
     def __str__(self) :
         return self.fname + self.lname

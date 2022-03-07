@@ -19,7 +19,7 @@ def book(request):
             else :
                 return render(request,'appointment/book.html',{'wrongmail':'Email is not valid, try again !!'})
 
-            if request.POST['mobile'].length<10 :
+            if len(request.POST['mobile'])<10 :
                 return render(request,'appointment/book.html',{'wrongno':'Mobile number is not valid , try again!!'})
             else :
                 if request.POST['mobile'].startswith('+91'):
