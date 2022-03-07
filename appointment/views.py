@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Appointment
+from .forms import EditAppointmentForm
 
 # Create your views here.
 
@@ -44,4 +45,11 @@ def manage(request):
 
 @login_required
 def view(request):
-    return render(request, 'appointment/view.html')
+    clients_confirmed = Appointment.objects
+    return render(request, 'appointment/view.html', {'clients_confirmed': clients_confirmed})
+
+@login_required
+def edit(request, appointment_id):
+    form = EditAppointmentForm
+    appointment = Appointment.objects.get(pk=appointment_id)
+    return render(request, 'appointment/edit.html', {'appointment': appointment, 'form': form,})
