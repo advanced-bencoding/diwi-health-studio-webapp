@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="my-5">
+    <h1>View Appointments</h1>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-xl-1">
+    
+            </div>
+            <div class="col-xl-8">
+                <div class="container card-back">
+                    <div class="row mt-5">
+                        <div class="col-xl-3">
+                            <h5>Client:</h5>
+                            {{ appointment.fname }} {{ appointment.lname}}
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Mobile:</h5>
+                            {{ appointment.mobile_no }}
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>E-mail:</h5>
+                            {{ appointment.email }}
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Age:</h5>
+                            {{ appointment.age }}
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-xl-3">
+                            <h5>Sex:</h5>
+                            {{ appointment.sex }}
+                        </div>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                        <div class="col-xl-3">
+                            <h5>Service:</h5>
+                            {{ appointment.service }}
+                        </div>
+                        <div class="col-xl-3">
+                            <form>
+                                <h5>Date Requested:</h5>
+                                <input class="form-control" type="date" value="2022-05-03" name="date">
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Notes:</h5>
+                            My Teeth Hurt
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Set Time Slot:</h5>
+                        
+                            <div class="row">
+                                <div class="col-5">
+                                    <input type="time" class="form-control form-inline">
+                                </div>
+                                <div class="col-1">
+                                    -
+                                </div>
+                                <div class="col-5">
+                                    <input type="time" class="form-control form-inline">
+                                </div>
+                            </div>
+                                                  
+                            <div class="my-3">
+                                <input type="submit" class="btn btn-success" value="Confirm Changes">
+                            </form>
+                                <form>
+                                <input type="submit" class="btn btn-danger" value="Cancel Changes">
+                            </div>                       
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3">
+                <a href="{% url 'manage' %}">
+                    <h3>Manage Appointments</h3>
+                    <button type="button" class="btn btn-primary">
+                        New Appointment Requests <span class="badge bg-secondary">4</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
