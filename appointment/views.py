@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Appointment
 from .forms import EditAppointmentForm
@@ -8,7 +8,7 @@ from .forms import EditAppointmentForm
 
 def book(request):
     if request.method == "POST":
-        if request.POST['fname'] and request.POST['lname'] and request.POST['age'] and request.POST['sex'] and request.POST['mobile'] and request.POST['email'] and request.POST['date'] and request.POST['service'] and request.POST['time'] :
+
             a = Appointment()
             a.fname = request.POST['fname']
             a.lname = request.POST['lname']
@@ -31,10 +31,10 @@ def book(request):
             a.Notes = request.POST['notes']
             a.service = request.POST['service']
             a.sex = request.POST['sex']
-            a.time = request.POST['time']
+            a.slot = request.POST['slot']
 
             a.save()
-            return render(request,'home/home.html',{'message':'Appointment Booked Successfully'})
+            return redirect('/?resp=Appointment Requested Successfuly. We will contact you shortly to confirm your booking.')
     else:
         return render(request, 'appointment/book.html')
 
@@ -46,10 +46,22 @@ def manage(request):
 @login_required
 def view(request):
     clients_confirmed = Appointment.objects
+    if request.method=="POST":
+        id = request.POST['id']
+        client = clients_confirmed.get(pk=id)
+        client.delete()
+        return redirect('/view/')
     return render(request, 'appointment/view.html', {'clients_confirmed': clients_confirmed})
 
 @login_required
 def edit(request, appointment_id):
+    appointment = Appointment.objects.get(pk=appointment_id)
+    if request.method=="POST":
+        appointment.date = request.POST['date']
+        appointment.time_start = request.POST['time_start']
+        appointment.time_end = request.POST['time_end']
+        appointment.save()
+        return redirect('/view/')
     form = EditAppointmentForm
     appointment = Appointment.objects.get(pk=appointment_id)
     return render(request, 'appointment/edit.html', {'appointment': appointment, 'form': form,})
