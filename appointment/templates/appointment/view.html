@@ -56,11 +56,13 @@
                             <div class="row px-3">
                                 {{ client.time_start }} - {{ client.time_end }}
                             </div>
-                            <form>
+                            <form action="{% url 'view' %}" method="POST">
+                                {% csrf_token %}
                             <div class="my-3">
                                 <a href="{% url 'edit' client.id %}" style="text-decoration: none;">
                                     <button type="button" class="btn btn-success">Edit Appointment</button>
                                 </a>
+                                <input type="number" value="{{ client.id }}" name="id" style="display:none">
                                 <input type="submit" class="btn btn-danger" value="Cancel Appointment">
                             </div>                       
                         </form>
