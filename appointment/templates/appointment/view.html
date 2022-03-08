@@ -14,7 +14,7 @@
             <div class="col-xl-8">
                 {% for client in clients_confirmed.all %}
                 {% if client.status and client.verified %}
-                <div class="container card-back">
+                <div class="container card-back my-5">
                     <div class="row mt-5">
                         <div class="col-xl-3">
                             <h5>Client:</h5>
@@ -77,6 +77,9 @@
                     <button type="button" class="btn btn-primary">
                         New Appointment Requests <span class="badge bg-secondary">4</span>
                     </button>
+                </a>
+                <a href="{% url 'create' %}">
+                    <h3>Create an Appointment</h3>
                 </a>
             </div>
         </div>

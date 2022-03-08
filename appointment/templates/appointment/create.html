@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="my-5">
+    <h1>Create an Appointment</h1>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-xl-1">
+    
+            </div>
+            <div class="col-xl-8">
+                <form method="POST" action="{% url 'create' %}">
+                    {% csrf_token %}
+                <div class="container card-back">
+                    <div class="row mt-5">
+                        <div class="col-xl-3">
+                            <h5>Client:</h5>
+                            <input class ="form-control" type="text" placeholder="First Name*" name="fname" required>
+                            <input class ="form-control" type="text" placeholder="Last Name" name="lname">
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Mobile:</h5>
+                            <input class ="form-control" type="number" placeholder="Mobile*" name="mobile" required>
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>E-mail:</h5>
+                            <input class ="form-control" type="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Age:</h5>
+                            <input class ="form-control" type="number" placeholder="Age*" name="age" required>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-xl-3">
+                            <h5>Sex:</h5>
+                            <select class="form-select" name="sex" required>
+                                <option selected disabled value="">Sex*</option>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                                <option value="o">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Service:</h5>
+                            <select class="form-select" name="service" required>
+                                <option selected disabled value="">Service*</option>
+                                <option value="1">Dental Care</option>
+                                <option value="2">Cosmetic Care</option>
+                                <option value="2">Nutritional Care</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3">
+                            <form>
+                                <h5>Date:</h5>
+                                <input class="form-control" type="date" name="date">
+                        </div>
+                        <div class="col-xl-3">
+                            <h5>Notes:</h5>
+                            <input class ="form-control" type="text" placeholder="Extra Notes (Optional)" name="notes">
+                            <input type="text" class="form-control form-inline" value="t" name="verified" style="display: none;">
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Set Time Slot:</h5>
+                        
+                            <div class="row">
+                                <div class="col-5">
+                                    <input type="time" class="form-control form-inline" name="time_start" required>
+                                </div>
+                                <div class="col-1">
+                                    -
+                                </div>
+                                <div class="col-5">
+                                    <input type="time" class="form-control form-inline" name="time_end" required>
+                                </div>
+                            </div>
+                            <div class="my-3">
+                                <input type="submit" class="btn btn-success" value="Create">
+                                <a href="{% url 'view' %}" style="text-decoration:none;">
+                                    <button type="button" class="btn btn-danger">Cancel</button>
+                                </a>
+                            </div>                       
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3">
+                <h3><a href="{% url 'view' %}">View Appointments</a></h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

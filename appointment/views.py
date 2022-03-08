@@ -65,3 +65,24 @@ def edit(request, appointment_id):
     form = EditAppointmentForm
     appointment = Appointment.objects.get(pk=appointment_id)
     return render(request, 'appointment/edit.html', {'appointment': appointment, 'form': form,})
+
+@login_required
+def create(request):
+    if request.method=="POST":
+        a = Appointment()
+        a.fname = request.POST['fname']
+        a.lname = request.POST['lname']
+        a.age = request.POST['age']
+        a.date = request.POST['date']
+        a.Notes = request.POST['notes']
+        a.service = request.POST['service']
+        a.sex = request.POST['sex']
+        a.time_start = request.POST['time_start']
+        a.time_end = request.POST['time_end']
+        a.mobile_no = request.POST['mobile']
+        a.email = request.POST['email']
+        a.verified = request.POST['verified']
+        a.status = request.POST['verified']
+        a.save()
+        return redirect('/view/')
+    return render(request, 'appointment/create.html')
