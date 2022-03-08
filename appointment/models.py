@@ -15,6 +15,7 @@ class Appointment (models.Model):
     service = models.CharField(max_length=20)
     status = models.BooleanField(default=False)
     verified = models.BooleanField(default=False)
+    slot = models.CharField(max_length=10, default="Morning")
 
     def __str__(self) :
         return self.fname + self.lname
