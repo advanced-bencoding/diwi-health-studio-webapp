@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Appointment
 from .forms import EditAppointmentForm
@@ -46,12 +46,13 @@ def book(request):
 
 @login_required
 def manage(request):
-    return render(request, 'appointment/manage.html')
+    b=Appointment.objects.all()
+    return render(request, 'appointment/manage.html',{'aps':b})
 
 
 @login_required
 def view(request):
-    clients_confirmed = Appointment.objects
+    clients_confirmed = Appointment.objects.all()
     if request.method == "POST":
         id = request.POST['id']
         client = clients_confirmed.get(pk=id)
