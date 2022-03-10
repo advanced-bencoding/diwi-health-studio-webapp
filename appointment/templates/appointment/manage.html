@@ -2,20 +2,24 @@
 {% load static %}
 
 {% block content %}
-
+{% if message %}
+<div class="alert alert-success alert-dismissible fade show">
+  <strong>
+    {{message}}
+    </strong>
+  <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+</div>
+{% endif %} 
 <div class="my-9">
-    <h1>Manage Appointments</h1>
-    <div class="col-xl-3" >
-        <h3><a href="{% url 'view' %}">View Appointments</a></h3>
-    </div>
-    {% for clients in aps reversed %}
+    <h1>Manage Appointments</h1>  
     <div class="container my-5">
         <div class="row">
             <div class="col-xl-1">
-    
             </div>
             <div class="col-xl-8">
-                <div class="container card-back">
+                {% for clients in aps%}
+                {% if clients.verified and not clients.status %}
+                <div class="container card-back my-5">
                     <div class="row mt-5">
                         <div class="col-xl-3">
                             <h5>Client:</h5>
@@ -31,7 +35,7 @@
                         </div>
                         <div class="col-xl-3">
                             <h5>Age:</h5>
-                            {{clients.age}} 
+                            {{clients.age}}
                         </div>
                     </div>
                     <div class="row mt-4">
@@ -44,9 +48,10 @@
                             {{clients.service}}
                         </div>
                         <div class="col-xl-3">
-                            <form>
+                            <form action="{{request.path}}" method="POST">
+                            {% csrf_token %}
                                 <h5>Date Requested:</h5>
-                                    {{clients.date}}
+                                <input class="form-control" type="date" value="{{clients.date.year}}-{{clients.date.month|stringformat:"02d"}}-{{clients.date.day}}" name="date" required>
                             </div>
                         <div class="col-xl-3">
                             <h5>Notes:</h5>
@@ -55,31 +60,40 @@
                     </div>
                     <div>
                         <h5>Set Time Slot:</h5>
-                        
+
                         <div class="row">
                             <div class="col-5">
-                                <input type="time" class="form-control form-inline" name="time_start">
+                                <input type="time" class="form-control form-inline" name="time_start" value="00:00">
                             </div>
                             <div class="col-1">
                                 -
                             </div>
                             <div class="col-5">
-                                <input type="time" class="form-control form-inline" name="time_end">
+                                <input type="time" class="form-control form-inline" name="time_end" value="00:00">
                             </div>
+                            <input type="number" value="{{ clients.id }}" name="id" style="display:none">
                         </div>
                         <div class="my-3">
-                            <input type="submit" class="btn btn-success" value="Confirm">
-                            <input type="submit" class="btn btn-danger" value="Reject">
-                        </div>                       
+                            <input type="submit" class="btn btn-success" value="Confirm" name="action">
+                            <input type="submit" class="btn btn-danger" value="Reject" name="action">
+                        </div>     
+                    </div>                  
                     </form>
+                   
+                    </div>
                 </div>
+                {% endif %}
+                {% endfor %}
+            </div>       
+            <div class="col-xl-3" >
+                <h3><a href="{% url 'view' %}">View Appointments</a></h3>
             </div>
+
         </div>
-        
     </div>
-</div>
 
 </div>
 
 {% endfor %}
+</div>
 {% endblock %}
