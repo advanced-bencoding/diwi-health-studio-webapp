@@ -18,7 +18,7 @@
             </div>
             <div class="col-xl-8">
                 {% for clients in aps%}
-                {% if clients.verified and not clients.status %}
+                <!-- {% if clients.verified and not clients.status %} -->
                 <div class="container card-back my-5">
                     <div class="row mt-5">
                         <div class="col-xl-3">
@@ -80,7 +80,6 @@
                     </div>                  
                     </form>         
                 </div>
-                {% endif %}
                 {% endfor %}
             </div>
             <div class="col-xl-3" >

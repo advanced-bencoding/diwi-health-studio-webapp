@@ -21,7 +21,7 @@
     <form name="myform" method="POST" action="{% url 'otp'%}">
     {% csrf_token %}
     <input type="number" value="{{id}}" name="id"></form>
-    <!-- <input type="text" value="f" name="verifiedOTP" id="v">  -->
+
     </form>
 </div>
  
@@ -51,7 +51,6 @@
             document.getElementById("verify_text_div").innerHTML="OTP Verified";
             document.getElementById("otp_div").style.display="none";
             document.getElementById("form_div").style.display="block";
-            // document.getElementById("v").value="T";
             document.myform.submit();
         }
         else{
