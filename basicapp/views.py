@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.core.mail import send_mail
 import math, random
@@ -18,14 +18,11 @@ def send_otp(request):
     return HttpResponse(o)
 
 def otp(request):
-    print('entered into otp')
     if request.method=="POST":
        id = request.POST['id']
        client = Appointment.objects.get(pk=id)
        client.verified = True
        client.save()
-    #    verify = request.POST['verifiedOTP'] 
        print(id)
-    #    print(verify)
-    return render (request,'home/home.html')
+    return redirect ('/')
     
