@@ -60,14 +60,14 @@ def manage(request):
             elif request.POST['action'] == "Reject":
                 appointment.delete()
                 return redirect('/manage/?resp=Appointment Request Deleted.')
-    b = Appointment.objects.filter(verified=True,status=False)
+    b = Appointment.objects.filter(verified=True,status=False).order_by('date')
     message = request.GET.get('resp')
     return render(request, 'appointment/manage.html',{'aps':b, 'message':message})
 
 
 @login_required
 def view(request):
-    clients_confirmed = Appointment.objects.all()
+    clients_confirmed = Appointment.objects.all().order_by('date')
     if request.method == "POST":
         id = request.POST['id']
         client = clients_confirmed.get(pk=id)
