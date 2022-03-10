@@ -4,6 +4,7 @@ from .models import Appointment
 from .forms import EditAppointmentForm
 from django.core.mail import send_mail,EmailMessage
 from diwihealthstudio import settings
+from services.models import Services
 
 sender = settings.EMAIL_HOST_USER
 
@@ -46,7 +47,8 @@ def book(request):
        # return redirect('/?resp=Appointment Requested Successfuly. We will contact you shortly to confirm your booking.')
         return render(request,'basicapp/home.html',{'id':a.id,'email':mail} )
     else:
-        return render(request, 'appointment/book.html')
+        services = Services.objects.all()
+        return render(request, 'appointment/book.html', {'services': services})
 
 
 @login_required
@@ -182,7 +184,8 @@ def create(request):
 
         a.save()
         return redirect('/view/')
-    return render(request, 'appointment/create.html')
+    services = Services.objects.all()
+    return render(request, 'appointment/create.html', {'services': services})
 
 def confirm():
     {

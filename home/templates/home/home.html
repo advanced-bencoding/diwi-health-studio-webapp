@@ -50,7 +50,7 @@
   </div>
 
   <div class="container mx-auto mt-5" style="width:50%">
-    <h3>Opening Hours</h3>
+    <h3 class="mx-5">Opening Hours</h3>
     <table class="table table-hover table-borderless my-5">
       <tr>
         <th id="tctl">Day</th>
@@ -92,7 +92,7 @@
   </div>
 
 
-  <h3>Services</h3>
+  <h3 class="mx-5"> Our Services</h3>
 
   <div class="container-fluid">
     {% for x in s.all %}
@@ -110,17 +110,19 @@
           {% if y.service_id == x.id %}
             <li><h4>{{ y.title }}</h4></li>
           {% endif %}
-  
           {% endfor %}
           </ul>
         </div>
         
       </div>
     </div>
+    <center>
+      <a class="btn btn-primary" href="{% url 'book' %}" id="w_text">Book Now</a>
+    </center>
     {% endfor %}
   </div>
 
-  <h3>Staff</h3>
+  <h3 class="mx-5 my-5"> Our Staff</h3>
 
   <div class="row">
 

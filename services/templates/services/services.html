@@ -3,6 +3,33 @@
 
 {% block content %}
 
-Will display list of services here
+<div class="container-fluid">
+    {% for x in s %}
+    <div class="row my-5">
+      <div class="img img-fluid col-md-6" style="background-image: url('{{ x.thumbnail.url }}');">
+      </div>
+      <div class="col-md-6" style="background-image: linear-gradient(rgb(81, 185, 211), rgb(74, 207, 207)); color:aliceblue">
+        <div class="container mt-5">
+          <center>
+            <h1>{{ x.title }}</h1>
+          </center> 
+          <ul class="my-5 list-unstyled">
+          {% for y in sub %}
+  
+          {% if y.service_id == x.id %}
+            <li><h4>{{ y.title }}</h4></li>
+          {% endif %}
+  
+          {% endfor %}
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+    <center style="padding-bottom: 20px;">
+        <a class="btn btn-primary" href="{% url 'book' %}" id="w_text">Book Now</a>
+    </center>
+    {% endfor %}
+  </div>
 
 {% endblock %}

@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="py-5">
-    <h1>Create an Appointment</h1>
+    <h1 class="mx-5">Create an Appointment</h1>
 
     <div class="container my-5">
         <div class="row">
@@ -48,9 +48,9 @@
                             <h5>Service:</h5>
                             <select class="form-select" name="service" required>
                                 <option selected disabled value="">Service*</option>
-                                <option value="Dental Care">Dental Care</option>
-                                <option value="Cosmetic Care">Cosmetic Care</option>
-                                <option value="Nutritional Care">Nutritional Care</option>
+                                {% for service in services %}
+                                <option value="{{ service.title }}">{{ service.title }}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-xl-3">
