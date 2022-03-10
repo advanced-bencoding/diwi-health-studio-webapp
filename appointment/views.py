@@ -5,6 +5,8 @@ from .forms import EditAppointmentForm
 from django.core.mail import send_mail,EmailMessage
 from diwihealthstudio import settings
 
+sender = settings.EMAIL_HOST_USER
+
 # Create your views here.
 
 
@@ -61,12 +63,13 @@ def manage(request):
                 email = appointment.email
                 
                 appointment.save()
+                message = 'Your Appointment for ' + appointment.service +' is Successfully booked .'+ ' Your appointment is scheduled on Date '+appointment.date+' from ' +appointment.time_start+ ' to '+appointment.time_end+'.'
 
                 
-                sender = settings.EMAIL_HOST_USER
+                
                 send_mail(
-                            'subject' , #subject
-                            'message', #message
+                            'Appointment Booked' , #subject
+                            message, #message
                             sender, #from email
                             [email], #to email
                             fail_silently= False,
@@ -74,6 +77,18 @@ def manage(request):
                             )
                 return redirect('/manage/?resp=Appointment Confirmed Successfully.')
             elif request.POST['action'] == "Reject":
+                # date1 = (str)appointment.date
+                email = appointment.email
+                message = 'Your appointment for '+appointment.service+' on '+str(appointment.date)+ '  is cancelled.'
+                send_mail(
+                'Appointment Cancelled' , #subject
+                    message, #message
+                    sender, #from email
+                    [email], #to email
+                    fail_silently= False,
+
+                    )
+
                 appointment.delete()
 
 
@@ -89,6 +104,19 @@ def view(request):
     if request.method == "POST":
         id = request.POST['id']
         client = clients_confirmed.get(pk=id)
+
+        email = client.email
+        message = 'Your appointment for '+client.service+' on '+str(client.date)+'is cancelled.'
+        send_mail(
+            'Appointment Cancelled' , #subject
+            message, #message
+            sender, #from email
+            [email], #to email
+            fail_silently= False,
+
+            )
+
+
         client.delete()
         return redirect('/view/')
     return render(request, 'appointment/view.html', {'clients_confirmed': clients_confirmed})
@@ -101,7 +129,22 @@ def edit(request, appointment_id):
         appointment.date = request.POST['date']
         appointment.time_start = request.POST['time_start']
         appointment.time_end = request.POST['time_end']
+
+        email = appointment.email
+        message = ' Your Appoint for '+appointment.service+' is rescheduled from '+appointment.time_start+' to '+appointment.time_end
+
+        send_mail(
+            'Appointment Rescheduled' , #subject
+            message, #message
+            sender, #from email
+            [email], #to email
+            fail_silently= False,
+
+            )
+
         appointment.save()
+
+
         return redirect('/view/')
     form = EditAppointmentForm
     appointment = Appointment.objects.get(pk=appointment_id)
@@ -125,6 +168,18 @@ def create(request):
         a.email = request.POST['email']
         a.verified = request.POST['verified']
         a.status = request.POST['verified']
+
+        email = a.email
+        message = 'Your Appointment for ' + a.service +' is Successfully booked .'+ ' Your appointment is scheduled on Date '+a.date+' from ' +a.time_start+ ' to '+a.time_end+'.'
+        send_mail(
+                            'Appointment Booked' , #subject
+                            message, #message
+                            sender, #from email
+                            [email], #to email
+                            fail_silently= False,
+
+                            )
+
         a.save()
         return redirect('/view/')
     return render(request, 'appointment/create.html')
