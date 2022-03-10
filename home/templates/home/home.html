@@ -110,13 +110,15 @@
           {% if y.service_id == x.id %}
             <li><h4>{{ y.title }}</h4></li>
           {% endif %}
-  
           {% endfor %}
           </ul>
         </div>
         
       </div>
     </div>
+    <center>
+      <a class="btn btn-primary" href="{% url 'book' %}" id="w_text">Book Now</a>
+    </center>
     {% endfor %}
   </div>
 
