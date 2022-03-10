@@ -47,8 +47,7 @@ def book(request):
 
 @login_required
 def manage(request):
-    if request.method=="POST":
-        if Appointment.objects.filer(verified=True,clients=False):
+    if request.method=="POST":      
             id = request.POST['id']
             appointment = Appointment.objects.get(pk=id)
             if request.POST['action'] == "Confirm":
@@ -61,8 +60,8 @@ def manage(request):
             elif request.POST['action'] == "Reject":
                 appointment.delete()
                 return redirect('/manage/?resp=Appointment Request Deleted.')
+    b = Appointment.objects.filter(verified=True,status=False)
     message = request.GET.get('resp')
-    b=Appointment.objects.all()
     return render(request, 'appointment/manage.html',{'aps':b, 'message':message})
 
 
