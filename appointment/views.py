@@ -46,8 +46,22 @@ def book(request):
 
 @login_required
 def manage(request):
+    if request.method=="POST":
+        id = request.POST['id']
+        appointment = Appointment.objects.get(pk=id)
+        if request.POST['action'] == "Confirm":
+            appointment.date = request.POST['date']
+            appointment.time_start = request.POST['time_start']
+            appointment.time_end = request.POST['time_end']
+            appointment.status = 't'
+            appointment.save()
+            return redirect('/manage/?resp=Appointment Confirmed Successfully.')
+        elif request.POST['action'] == "Reject":
+            appointment.delete()
+            return redirect('/manage/?resp=Appointment Request Deleted.')
+    message = request.GET.get('resp')
     b=Appointment.objects.all()
-    return render(request, 'appointment/manage.html',{'aps':b})
+    return render(request, 'appointment/manage.html',{'aps':b, 'message':message})
 
 
 @login_required
