@@ -21,3 +21,16 @@ a:hover{
 #relative{
     position: relative;
 }
+
+.myfooter{
+    background-color: rgb(43, 43, 43);
+    color: aliceblue;
+}
+
+body{
+    background-image: url("body.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #56abfa;
+}

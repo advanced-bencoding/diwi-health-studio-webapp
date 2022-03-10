@@ -10,7 +10,7 @@
   <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
 </div>
 {% endif %} 
-<div class="my-9">
+<div class="py-5">
     <h1>Manage Appointments</h1>  
     <div class="container my-5">
         <div class="row">
@@ -50,7 +50,7 @@
                             <form action="{{request.path}}" method="POST">
                             {% csrf_token %}
                                 <h5>Date Requested:</h5>
-                                <input class="form-control" type="date" value="{{clients.date.year}}-{{clients.date.month|stringformat:"02d"}}-{{clients.date.day}}" name="date" required>
+                                <input class="form-control" type="date" value="{{clients.date.year}}-{{clients.date.month|stringformat:'02d'}}-{{clients.date.day}}" name="date" required>
                             </div>
                         <div class="col-xl-3">
                             <h5>Notes:</h5>
