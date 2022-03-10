@@ -1,35 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
-<div id="email_div" style="display: block;" >
 
-    <label for="email">Email</label>
-    <input type="text" value ='{{email}}' name="email" id="email">
+<div class="container my-5">
+    <h3>We need to authenticate your email to validate your request:</h3>
+    <div id="email_div" style="display: block;" class="my-3">
+        <input class="form-control" type="text" value ='{{email}}' name="email" id="email" disabled><br>
+        <button class="btn btn-primary" onclick="ajax_send_otp()">Request OTP</button>
+    </div>
     
-    <button  onclick="ajax_send_otp()">Send OTP</button>
+    <div id="verify_text_div"></div>
+    <div id="otp_div" style="display: none;" >
+        <input class="form-control" type="text" name="otp" id="otp" placeholder="Enter OTP here"><br>
+        <button class="btn btn-success" onclick="verify_otp()">Submit</button>
+    </div>
+    <br>
+    
+    <div id="form_div" style="display: none;" >
+    
+        <form name="myform" method="POST" action="{% url 'otp'%}">
+        {% csrf_token %}
+        <input type="number" value="{{id}}" name="id" style="display: none;"></form>
+    
+        </form>
+    </div>
 </div>
-
-<div id="verify_text_div"></div>
-<div id="otp_div" style="display: none;" >
-
-    <label for="email">OTP</label>
-    <input type="text" name="otp" id="otp">
-    <button  onclick="verify_otp()">Verify</button>
-</div>
-<br>
-
-<div id="form_div" style="display: none;" >
-
-    <form name="myform" method="POST" action="{% url 'otp'%}">
-    {% csrf_token %}
-    <input type="number" value="{{id}}" name="id"></form>
-
-    </form>
-</div>
- 
 
  <script>
      var otp_from_back="";
      function ajax_send_otp(){
         document.getElementById("email_div").style.display='none';
+        document.getElementById("otp_div").style.display='block';
         email = document.getElementById("email");
       $.post("send_otp",
           {
@@ -39,7 +42,6 @@
           function(data, status){
               if(status=="success"){
                   otp_from_back = data;
-                  document.getElementById("otp_div").style.display='block';
                   }
      }
      );
@@ -55,7 +57,8 @@
         }
         else{
             document.getElementById("verify_text_div").style.color="red";
-            document.getElementById("verify_text_div").innerHTML="Try Again!!";
+            document.getElementById("verify_text_div").innerHTML="Incorrect OTP, please try again.";
         }
     } 
  </script>
+{% endblock %}
