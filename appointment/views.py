@@ -133,7 +133,7 @@ def edit(request, appointment_id):
         appointment.time_end = request.POST['time_end']
 
         email = appointment.email
-        message = ' Your Appoint for '+appointment.service+' is rescheduled from '+appointment.time_start+' to '+appointment.time_end
+        message = ' Your Appoint for '+appointment.service+' has been rescheduled. New date: ' +str(appointment.date)+'. New time slot: ' + appointment.time_start+ ' to ' +appointment.time_end + '.'
 
         send_mail(
             'Appointment Rescheduled' , #subject
