@@ -106,19 +106,17 @@ def view(request):
     if request.method == "POST":
         id = request.POST['id']
         client = clients_confirmed.get(pk=id)
+        if request.POST['sub'] == "Cancel Appointment":
+            email = client.email
+            message = 'Your appointment for '+client.service+' on '+str(client.date)+'is cancelled.'
+            send_mail(
+                'Appointment Cancelled' , #subject
+                message, #message
+                sender, #from email
+                [email], #to email
+                fail_silently= False,
 
-        email = client.email
-        message = 'Your appointment for '+client.service+' on '+str(client.date)+'is cancelled.'
-        send_mail(
-            'Appointment Cancelled' , #subject
-            message, #message
-            sender, #from email
-            [email], #to email
-            fail_silently= False,
-
-            )
-
-
+                )
         client.delete()
         return redirect('/view/')
     return render(request, 'appointment/view.html', {'clients_confirmed': clients_confirmed})
