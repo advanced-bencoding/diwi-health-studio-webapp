@@ -27,7 +27,7 @@ import blog.views
 import appointment.views
 from services import views as services_view
 from home import views as home_view
-
+import basicapp.views
 urlpatterns = [
     path('', home_view.home, name='home'),
     path('book/', appointment.views.book, name='book'),
@@ -40,4 +40,6 @@ urlpatterns = [
     path('<int:blog_id>/', blog.views.detail, name='detail'),
     path('edit/<appointment_id>', appointment.views.edit, name='edit'),
     path('create/', appointment.views.create, name='create'),
+	path('otp/',basicapp.views.otp,name='otp'),
+    path('book/send_otp',basicapp.views.send_otp,name='send_otp')
 ] + static (settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

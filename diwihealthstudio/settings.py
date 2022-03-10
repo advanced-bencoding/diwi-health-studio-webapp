@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'basicapp',
     
     ]
 
@@ -132,3 +133,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static') #dont change this!!!!
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #dont change this!!!!
 MEDIA_URL = '/media/' #dont change this!!!!
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = '711deversh@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = "deversh@777"

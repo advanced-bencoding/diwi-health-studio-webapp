@@ -8,6 +8,14 @@ from .forms import EditAppointmentForm
 
 def book(request):
     if request.method == "POST":
+        # if request.POST['verified'] =='T':
+        #     print('Enter f block')
+        #     value = request.POST['verified']
+        #     print(value)
+        #     id=request.POST['id']
+        #     #print(value)
+        #     print(id)  
+        #     return render(request, "/")    
 
         a = Appointment()
         a.fname = request.POST['fname']
@@ -17,6 +25,7 @@ def book(request):
         
         if '@' and '.' in request.POST['email']:
             a.email = request.POST['email']
+            mail=request.POST['email']
         else:
             return render(request, 'appointment/book.html', {'wrongmail': 'Email is not valid, try again !!'})
 
@@ -39,7 +48,8 @@ def book(request):
         a.slot = request.POST['slot']
 
         a.save()
-        return redirect('/?resp=Appointment Requested Successfuly. We will contact you shortly to confirm your booking.')
+       # return redirect('/?resp=Appointment Requested Successfuly. We will contact you shortly to confirm your booking.')
+        return render(request,'basicapp/home.html',{'id':a.id,'email':mail} )
     else:
         return render(request, 'appointment/book.html')
 
