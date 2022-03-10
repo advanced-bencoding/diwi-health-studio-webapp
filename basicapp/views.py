@@ -23,6 +23,5 @@ def otp(request):
        client = Appointment.objects.get(pk=id)
        client.verified = True
        client.save()
-       print(id)
-    return redirect ('/')
+    return redirect ('/?resp=Appointment Requested Successfuly. We will contact you shortly to confirm your booking.')
     
