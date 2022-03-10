@@ -3,20 +3,21 @@
 {% block content %}
 
 <div class="container py-5">
-    <h2>We have written {{ blogs.count }} blogs</h2>
+    <center>
+        <h2>We have written {{ blogs.count }} blogs</h2>
 
-    {% for blog in blogs reversed %}
-    <a href="{% url 'detail' blog.id %}" style="text-decoration: none;">
-    <div class="card my-5" style="width: 50%;">
-        <img class="card-img-top" src="{{ blog.image.url }}" alt="Blog image">
-        <div class="card-body">
-          <h5 class="card-title">{{ blog.title }}</h5>
-          <p class="card-text">{{ blog.date }}</p>
-          <p class="card-text">{{ blog.description|truncatechars:100 }}</p>
+        {% for blog in blogs reversed %}
+        <a href="{% url 'detail' blog.id %}" style="text-decoration: none;">
+        <div class="card my-5" style="width: 70%;">
+            <img class="card-img-top" src="{{ blog.image.url }}" alt="Blog image">
+            <div class="card-body">
+              <h5 class="card-title">{{ blog.title }}</h5>
+              <p class="card-text">{{ blog.date }}</p>
+              <p class="card-text">{{ blog.description|truncatechars:100 }}</p>
+            </div>
         </div>
-    </div>
-    </a>
-    {% endfor %}
-
+        </a>
+        {% endfor %}
+    </center>
 </div>
 {% endblock %}
