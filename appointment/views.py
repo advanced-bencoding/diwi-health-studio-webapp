@@ -46,7 +46,8 @@ def book(request):
 
 @login_required
 def manage(request):
-    b=Appointment.objects.all()
+    b=Appointment.objects.filter(status='False')
+    
     return render(request, 'appointment/manage.html',{'aps':b})
 
 

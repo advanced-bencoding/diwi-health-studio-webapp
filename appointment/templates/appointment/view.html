@@ -75,7 +75,7 @@
                 <a href="{% url 'manage' %}">
                     <h3>Manage Appointments</h3>
                     <button type="button" class="btn btn-primary">
-                        New Appointment Requests <span class="badge bg-secondary">4</span>
+                        New Appointment Requests <span class="badge bg-secondary">{{clients_confirmed.objects.count}}</span>
                     </button>
                 </a>
                 <a href="{% url 'create' %}">
