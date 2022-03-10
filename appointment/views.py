@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Appointment
 from .forms import EditAppointmentForm
+from django.core.mail import send_mail,EmailMessage
+from diwihealthstudio import settings
 
 # Create your views here.
 
@@ -55,10 +57,26 @@ def manage(request):
                 appointment.time_start = request.POST['time_start']
                 appointment.time_end = request.POST['time_end']
                 appointment.status = 't'
+
+                email = appointment.email
+                
                 appointment.save()
+
+                
+                sender = settings.EMAIL_HOST_USER
+                send_mail(
+                            'subject' , #subject
+                            'message', #message
+                            sender, #from email
+                            [email], #to email
+                            fail_silently= False,
+
+                            )
                 return redirect('/manage/?resp=Appointment Confirmed Successfully.')
             elif request.POST['action'] == "Reject":
                 appointment.delete()
+
+
                 return redirect('/manage/?resp=Appointment Request Deleted.')
     b = Appointment.objects.filter(verified=True,status=False).order_by('date')
     message = request.GET.get('resp')
@@ -110,3 +128,8 @@ def create(request):
         a.save()
         return redirect('/view/')
     return render(request, 'appointment/create.html')
+
+def confirm():
+    {
+        
+}
