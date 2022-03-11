@@ -50,11 +50,13 @@
                             <form action="{{request.path}}" method="POST">
                             {% csrf_token %}
                                 <h5>Date Requested:</h5>
-                                <input class="form-control" type="date" value="{{clients.date.year}}-{{clients.date.month|stringformat:'02d'}}-{{clients.date.day}}" name="date" required>
+                                <input class="form-control" type="date" value="{{clients.date.year}}-{{clients.date.month|stringformat:'02d'}}-{{clients.date.day}}" name="date" min="{% now 'Y-m-d' %}" required>
                             </div>
                         <div class="col-xl-3">
                             <h5>Notes:</h5>
                             {{clients.Notes}}
+                            <h5>Preffered Time Slot:</h5>
+                            {{clients.slot}}
                         </div>
                     </div>
                     <div>
@@ -62,13 +64,13 @@
 
                         <div class="row">
                             <div class="col-5">
-                                <input type="time" class="form-control form-inline" name="time_start" value="00:00">
+                                <input type="time" class="form-control form-inline" name="time_start" value="09:00" min="10:00:00" max="17:00:00">
                             </div>
                             <div class="col-1">
                                 -
                             </div>
                             <div class="col-5">
-                                <input type="time" class="form-control form-inline" name="time_end" value="00:00">
+                                <input type="time" class="form-control form-inline" name="time_end" value="09:30" min="10:00:00" max="17:00:00">
                             </div>
                             <input type="number" value="{{ clients.id }}" name="id" style="display:none">
                         </div>

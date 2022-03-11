@@ -45,7 +45,7 @@
                         <div class="col-xl-3">
                             <form>
                                 <h5>Date Requested:</h5>
-                                <input class="form-control" type="date" value="{{appointment.date.year}}-{{appointment.date.month|stringformat:"02d"}}-{{appointment.date.day}}" name="date" required>
+                                <input class="form-control" type="date" value="{{appointment.date.year}}-{{appointment.date.month|stringformat:"02d"}}-{{appointment.date.day}}" name="date" min="{% now 'Y-m-d' %}" required>
                         </div>
                         <div class="col-xl-3">
                             <h5>Notes:</h5>
@@ -57,13 +57,13 @@
                         
                             <div class="row">
                                 <div class="col-5">
-                                    <input type="time" class="form-control form-inline" value="{{appointment.time_start.hour|stringformat:"02d"}}:{{appointment.time_start.minute|stringformat:"02d"}}" name="time_start" required>
+                                    <input type="time" class="form-control form-inline" value="{{appointment.time_start.hour|stringformat:"02d"}}:{{appointment.time_start.minute|stringformat:"02d"}}" name="time_start" min="10:00:00" max="17:00:00" required>
                                 </div>
                                 <div class="col-1">
                                     -
                                 </div>
                                 <div class="col-5">
-                                    <input type="time" class="form-control form-inline" value="{{appointment.time_end.hour|stringformat:"02d"}}:{{appointment.time_end.minute|stringformat:"02d"}}" name="time_end" required>
+                                    <input type="time" class="form-control form-inline" value="{{appointment.time_end.hour|stringformat:"02d"}}:{{appointment.time_end.minute|stringformat:"02d"}}" name="time_end" min="10:00:00" max="17:00:00" required>
                                 </div>
                             </div>
                                                   
