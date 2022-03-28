@@ -45,7 +45,7 @@
                         <div class="col-xl-3">
                             <form>
                                 <h5>Date Requested:</h5>
-                                <input class="form-control" type="date" value="{{appointment.date.year}}-{{appointment.date.month|stringformat:"02d"}}-{{appointment.date.day}}" name="date" min="{% now 'Y-m-d' %}" required>
+                                <input class="form-control" type="date" value="{{appointment.date.year}}-{{appointment.date.month|stringformat:'02d'}}-{{appointment.date.day|stringformat:'02d'}}" name="date" min="{% now 'Y-m-d' %}" required>
                         </div>
                         <div class="col-xl-3">
                             <h5>Notes:</h5>
