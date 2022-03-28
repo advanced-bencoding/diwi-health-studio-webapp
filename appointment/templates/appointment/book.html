@@ -19,82 +19,85 @@
 </div>
 {% endif %} 
 
-<div class="container-fluid form-back">
-    <div class="row" style="margin-right: 50px;">
-        <div class="col-3 my-5">
-
-        </div>
-        <div class="col-9 my-5">
-            <div class="form-control" style="padding-right: 5%" id="myform">
-                <h2 class="text-center mt-4">Book An Appointment</h2>
-                <form method="POST" action="{% url 'book' %}">
-                    {% csrf_token %}
-                    <div class="row mt-5">
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <input class ="form-control" type="text" placeholder="First Name*" name="fname" required autofocus>
+<body>
+    <div class="container-fluid">
+        <div class="row" style="margin-right: 50px;">
+            <div class="col-3 my-5">
+    
+            </div>
+            <div class="col-9 my-5">
+                <div class="form-control" style="padding-right: 5%" id="myform">
+                    <h2 class="text-center mt-4">Book An Appointment</h2>
+                    <form method="POST" action="{% url 'book' %}">
+                        {% csrf_token %}
+                        <div class="row mt-5">
+                            <div class="col-2"></div>
+                            <div class="col-5">
+                                <input class ="form-control" type="text" placeholder="First Name*" name="fname" required autofocus>
+                            </div>
+                            <div class="col-5">
+                                <input class ="form-control" type="text" placeholder="Last Name" name="lname">
+                            </div>
                         </div>
-                        <div class="col-5">
-                            <input class ="form-control" type="text" placeholder="Last Name" name="lname">
+                        <div class="row mt-4">
+                            <div class="col-2"></div>
+                            <div class="col-5">
+                                <input class ="form-control" type="number" placeholder="Age*" name="age" required>
+                            </div>
+                            <div class="col-5">
+                                <select class="form-select" name="sex" required>
+                                    <option selected disabled value="">Sex*</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <input class ="form-control" type="number" placeholder="Age*" name="age" required>
+                        <div class="row mt-4">
+                            <div class="col-2"></div>
+                            <div class="col-5">
+                                <input class ="form-control" type="number" placeholder="Mobile*" name="mobile" required>
+                            </div>
+                            <div class="col-5">
+                                <input class ="form-control" type="email" placeholder="Email*" name="email" required>
+                            </div>
                         </div>
-                        <div class="col-5">
-                            <select class="form-select" name="sex" required>
-                                <option selected disabled value="">Sex*</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
+                        <div class="row mt-4">
+                            <div class="col-2"></div>
+                            <div class="col-5">
+                                <input class ="form-control" type="date" placeholder="Appointment Date" name="date" min="{% now 'Y-m-d' %}" required>
+                            </div>
+                            <div class="col-5">
+                                <select class="form-select" name="slot" required>
+                                    <option selected disabled value="">Appointment Time</option>
+                                    <option value="Morning">Morning (8am-1pm)</option>
+                                    <option value="Afternoon">Afternoon (2pm-5pm)</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <input class ="form-control" type="number" placeholder="Mobile*" name="mobile" required>
+                        <div class="row mt-4">
+                            <div class="col-2"></div>
+                            <div class="col-5">
+                                <input class ="form-control" type="text" placeholder="Extra Notes (Optional)" name="notes">
+                            </div>
+                            <div class="col-5">
+                                <select class="form-select" name="service" required>
+                                    <option selected disabled value="">Service*</option>
+                                    {% for service in services%}
+                                    <option value="{{ service.id }}">{{ service.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-5">
-                            <input class ="form-control" type="email" placeholder="Email*" name="email" required>
+                        <div class="mt-4" style="padding-left: 50%;">
+                            <button class="btn btn-primary" type="submit" value="Book Now" style="height:50px; width:150px; border-radius: 200px;">Book Now</button>
                         </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <input class ="form-control" type="date" placeholder="Appointment Date" name="date" min="{% now 'Y-m-d' %}" required>
-                        </div>
-                        <div class="col-5">
-                            <select class="form-select" name="slot" required>
-                                <option selected disabled value="">Appointment Time</option>
-                                <option value="Morning">Morning (8am-1pm)</option>
-                                <option value="Afternoon">Afternoon (2pm-5pm)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-2"></div>
-                        <div class="col-5">
-                            <input class ="form-control" type="text" placeholder="Extra Notes (Optional)" name="notes">
-                        </div>
-                        <div class="col-5">
-                            <select class="form-select" name="service" required>
-                                <option selected disabled value="">Service*</option>
-                                {% for service in services%}
-                                <option value="{{ service.id }}">{{ service.title }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mt-4" style="padding-left: 50%;">
-                        <button class="btn btn-primary" type="submit" value="Book Now" style="height:50px; width:150px; border-radius: 200px;">Book Now</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+
 
 {% endblock %}
