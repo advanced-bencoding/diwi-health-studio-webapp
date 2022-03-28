@@ -144,13 +144,13 @@
             <div class="row" style="padding-left: 10%;">
               <h6>Currently working in:</h6>
               {% for department in departments %}
-              {% if staff.id == department.staff_id %}
-              {% for x in s.all %}
-              {% if x.id == department.services_id %}
-              <p>{{x.title}}</p>
-              {% endif %}
-              {% endfor %}
-              {% endif %}
+                {% if staff.id == department.staff_id %}
+                  {% for x in s.all %}
+                    {% if x.id == department.services_id %}
+                      <p>{{x.title}}</p>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
               {% endfor%}
             </div>
           </div>
