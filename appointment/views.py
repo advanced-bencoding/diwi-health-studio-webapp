@@ -39,7 +39,7 @@ def book(request):
                 return render(request, 'appointment/book.html', {'wrongmno': 'Invalid mobile number, try again!!'})
 
         a.Notes = request.POST['notes']
-        a.service = request.POST['service']
+        a.service = Services.objects.get(id=request.POST['service'])
         a.sex = request.POST['sex']
         a.slot = request.POST['slot']
 
@@ -65,7 +65,7 @@ def manage(request):
                 email = appointment.email
                 
                 appointment.save()
-                message = 'Your Appointment for ' + appointment.service +' is Successfully booked .'+ ' Your appointment is scheduled on Date '+appointment.date+' from ' +appointment.time_start+ ' to '+appointment.time_end+'.'
+                message = 'Your Appointment for ' + str(appointment.service) +' is Successfully booked .'+ ' Your appointment is scheduled on Date '+appointment.date+' from ' +appointment.time_start+ ' to '+appointment.time_end+'.'
 
                 
                 
@@ -108,7 +108,7 @@ def view(request):
         client = clients_confirmed.get(pk=id)
         if request.POST['sub'] == "Cancel Appointment":
             email = client.email
-            message = 'Your appointment for '+client.service+' on '+str(client.date)+'is cancelled.'
+            message = 'Your appointment for '+str(client.service)+' on '+str(client.date)+'is cancelled.'
             send_mail(
                 'Appointment Cancelled' , #subject
                 message, #message
@@ -131,7 +131,7 @@ def edit(request, appointment_id):
         appointment.time_end = request.POST['time_end']
 
         email = appointment.email
-        message = ' Your Appoint for '+appointment.service+' has been rescheduled. New date: ' +str(appointment.date)+'. New time slot: ' + appointment.time_start+ ' to ' +appointment.time_end + '.'
+        message = ' Your Appointment for '+str(appointment.service)+' has been rescheduled. New date: ' +str(appointment.date)+'. New time slot: ' + appointment.time_start+ ' to ' +appointment.time_end + '.'
 
         send_mail(
             'Appointment Rescheduled' , #subject
@@ -160,7 +160,7 @@ def create(request):
         a.age = request.POST['age']
         a.date = request.POST['date']
         a.Notes = request.POST['notes']
-        a.service = request.POST['service']
+        a.service = Services.objects.get(id=request.POST['service'])
         a.sex = request.POST['sex']
         a.time_start = request.POST['time_start']
         a.time_end = request.POST['time_end']
@@ -170,7 +170,7 @@ def create(request):
         a.status = request.POST['verified']
 
         email = a.email
-        message = 'Your Appointment for ' + a.service +' is Successfully booked .'+ ' Your appointment is scheduled on Date '+a.date+' from ' +a.time_start+ ' to '+a.time_end+'.'
+        message = 'Your Appointment for ' + str(a.service) +' is Successfully booked .'+ ' Your appointment is scheduled on Date '+a.date+' from ' +a.time_start+ ' to '+a.time_end+'.'
         send_mail(
                             'Appointment Booked' , #subject
                             message, #message
