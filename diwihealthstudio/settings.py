@@ -135,9 +135,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') #dont change this!!!!
 MEDIA_URL = '/media/' #dont change this!!!!
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = '711deversh@gmail.com'
+EMAIL_HOST_USER = 'diwi.healthstudio@gmail.com'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "deversh@777"
-DEFAULT_FROM_EMAIL = '711deversh@gmail.com'
+EMAIL_HOST_PASSWORD = "Pinksaa@1664"
+DEFAULT_FROM_EMAIL = 'diwi.healthstudio@gmail.com'

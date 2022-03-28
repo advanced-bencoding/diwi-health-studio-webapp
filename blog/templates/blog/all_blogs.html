@@ -13,6 +13,9 @@
             <div class="card-body">
               <h5 class="card-title">{{ blog.title }}</h5>
               <p class="card-text">{{ blog.date }}</p>
+              {% if blog.written_by %}
+              <p class="card-text">by {{ blog.written_by }}</p>
+              {% endif %}
               <p class="card-text">{{ blog.description|truncatechars:100 }}</p>
             </div>
         </div>
