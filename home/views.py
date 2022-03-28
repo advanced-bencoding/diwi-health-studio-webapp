@@ -8,4 +8,5 @@ def home(request):
     s = Services.objects
     sub = SubService.objects
     staffs = Staff.objects
-    return render(request, 'home/home.html', {'s': s, 'sub': sub, 'staffs': staffs, 'message': message})
+    dep = Staff.department.through.objects.all()
+    return render(request, 'home/home.html', {'s': s, 'sub': sub, 'staffs': staffs, 'message': message, 'departments': dep,})
