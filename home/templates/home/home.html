@@ -51,7 +51,7 @@
 
   <div class="container mx-auto mt-5" style="width:50%">
     <div class="titles">
-    <h3 id="titless" class="mx-5 ">Opening Hours</h3>
+    <h3 id="titless" class="mx-5 ">OPENING Hours</h3>
     </div>
     <table class="table table-hover table-borderless my-5">
       <tr>
@@ -94,7 +94,7 @@
   </div>
 
   <div class="titles">
-  <h3 id="titless" class="mx-5">Services</h3>
+  <h3 id="titless" class="mx-5">SERVICES</h3>
   </div>
 
   <div class="container-fluid">
@@ -123,15 +123,16 @@
       <a class="btn btn-primary" href="{% url 'book' %}" id="w_text">Book Now</a>
     </center>
     {% endfor %}
+    <br>
   </div>
   <div class="titles">
-  <h3 id="titless" class="mx-5 my-5 ">Staff</h3>
+  <h3 id="titless" class="mx-5">STAFF</h3>
   </div>
   <div class="row">
-
     {% for staff in staffs.all %}
-
+    
     <div class="col-xxl-4">
+      <br>
       <div class="container p-3 staff-card">
         <div class="row">
           <div class="col-2">

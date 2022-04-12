@@ -62,11 +62,11 @@
     transition-property: transform , color;
     transition-timing-function:cubic-bezier(0.68, 0.55, 0.265, 1.55);
     transition-duration: 1200ms;
+    color: rgb(37, 90, 79);
 }
 
 #titless{
     font-size: 2.5rem; 
-    /* div is not excepting font size of text inside it , why ? */
 }
  
 .titles:hover{
