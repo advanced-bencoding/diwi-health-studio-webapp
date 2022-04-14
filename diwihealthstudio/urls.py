@@ -35,7 +35,6 @@ urlpatterns = [
     path('view/', appointment.views.view, name='view'),
     path('staff/', staff.views.staff,name="staffpage"),
     path('admin/', admin.site.urls),
-    path('services/', services_view.services, name='services'),
     path('blog/', blog.views.all_blogs, name='all_blogs'),
     path('<int:blog_id>/', blog.views.detail, name='detail'),
     path('edit/<appointment_id>', appointment.views.edit, name='edit'),
