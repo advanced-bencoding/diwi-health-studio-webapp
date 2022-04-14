@@ -1,3 +1,11 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
 #tc1{
     background-color: rgb(74, 207, 207);
     color: aliceblue;
@@ -55,6 +63,8 @@
     background-color: white;
 }
 
+/* ********* TITLES ***************** */
+
 .titles{
     width: max-content;
     position: relative;
@@ -73,12 +83,16 @@
     color:rgb(66, 30, 63);
     transform: scale(1.5);
 }
+/* ************************************ */
+
+/* ***********BOOK NOW BUTTON ************* */
 
 .button{
-
+    width: max-content;
     position: relative;
     left: 46%;
     padding: 15px 0px;
+    border: 2px solid black;
 
   appearance: none;
   background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
@@ -94,7 +108,6 @@
   overflow: hidden;
   padding-left: 16px;
   padding-right: 16px;
-  position: relative;
   text-decoration: none;
   transition: box-shadow .15s,transform .15s;
   font-size: 18px;
@@ -106,5 +119,73 @@
 
 .button:active {
   box-shadow: #060a25 5px 3px 7px inset;
+}
+/* ************************************ */
+
+/* ***********SERVICES*****************/
+.sr{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.sr-container{
+    box-sizing:content-box;
+    display: grid;
+    grid-template-columns: 50% auto;
+    height:auto;
+}
+
+.sr-img{
+    height: 70vh;
+}
+
+.service-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+}
+
+.sr-detail{
+    padding-left: 10%;
+    height: 70vh;
+    width:100%;
+    object-fit: cover;
+    text-align: center;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.sub-sr-detail{
+    text-align:start;
+
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(64, 64, 141);
+    border-radius: 5px;
+  }
+
+/* ******************************* */
+
+@media only screen and (max-width: 1000px){
+   .sr-img{
+       display: none;
+   }
+   .sr-detail{
+       width: 100%;
+       height: max-content;
+       object-fit: contain;
+       text-align: center;
+   }
+   .sr-container{
+       display:contents;
+       height: max-content;
+   }
 }
 
