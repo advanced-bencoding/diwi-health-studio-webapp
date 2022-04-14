@@ -92,7 +92,6 @@ html,body
     position: relative;
     left: 46%;
     padding: 15px 0px;
-    border: 2px solid black;
 
   appearance: none;
   background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
@@ -115,6 +114,8 @@ html,body
 
 .button:hover {
     box-shadow: rgba(45, 35, 66, .4) 0 8px 12px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    /* transform: ); */
+    transform: translate(2px);
 }
 
 .button:active {
@@ -173,6 +174,7 @@ html,body
 
 /* ******************************* */
 
+/* *********** Services Responsiveness ******** */
 @media only screen and (max-width: 1000px){
    .sr-img{
        display: none;
