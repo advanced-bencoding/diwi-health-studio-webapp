@@ -80,17 +80,6 @@ def manage(request):
                 return redirect('/manage/?resp=Appointment Confirmed Successfully.')
             elif request.POST['action'] == "Reject":
                 # date1 = (str)appointment.date
-                email = appointment.email
-                message = 'Your appointment for '+appointment.service+' on '+str(appointment.date)+ '  is cancelled.'
-                send_mail(
-                'Appointment Cancelled' , #subject
-                    message, #message
-                    sender, #from email
-                    [email], #to email
-                    fail_silently= False,
-
-                    )
-
                 appointment.delete()
 
 

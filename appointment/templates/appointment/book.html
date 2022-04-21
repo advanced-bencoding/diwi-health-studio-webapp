@@ -7,7 +7,7 @@
   <strong>
     {{wrongmno}}
     </strong>
-  <button type="button" class="btn-close " data-bs-dismiss="alert"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 </div>
 {% endif %} 
 {% if wrongmail %}
@@ -28,7 +28,7 @@
             <div class="col-9 my-5">
                 <div class="form-control" style="padding-right: 5%; padding-top: 3%; padding-bottom: 5%; background-image :linear-gradient(rgb(81, 185, 211), rgb(74, 207, 207));" id="myform">
                     <h2 class="text-center mt-4">Book An Appointment</h2>
-                    <form method="POST" action="{% url 'book' %}">
+                    <form method="POST" action="{% url 'book' %}" id="book-form">
                         {% csrf_token %}
                         <div class="row mt-5">
                             <div class="col-2"></div>
@@ -56,7 +56,7 @@
                         <div class="row mt-4">
                             <div class="col-2"></div>
                             <div class="col-5">
-                                <input class ="form-control" type="number" placeholder="Mobile*" name="mobile" required>
+                                <input class ="form-control" type="number" placeholder="Mobile*" name="mobile" id="mobile" required>
                             </div>
                             <div class="col-5">
                                 <input class ="form-control" type="email" placeholder="Email*" name="email" required>
@@ -90,14 +90,19 @@
                             </div>
                         </div>
                         <div class="mt-4" style="padding-left: 50%;">
-                            <button class="btn btn-primary" type="submit" value="Book Now" style="height:50px; width:150px; border-radius: 200px;">Book Now</button>
+                            <button class="btn btn-primary" id="submit-btn" value="Book Now" style="height:50px; width:150px; border-radius: 200px;">Book Now</button>
                         </div>
+                        <center>
+                            <div id="error">
+                                hello
+                            </div>
+                        </center>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </body>
-
+<script src="{% static 'appointment\book.js' %}"></script>
 
 {% endblock %}
