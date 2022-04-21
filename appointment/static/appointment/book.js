@@ -12,8 +12,13 @@ submitBtn.addEventListener("click", (event)=>{
         errorMessage.setAttribute("style", "display: block;")
         valid = false
     }
-    if(valid){
+    if(!form.checkValidity()){
+        form.reportValidity()
+    }
+
+    else if(valid && form.checkValidity()){
         console.log(valid)
+        form.noValidate = false
         form.submit()
     }
 })

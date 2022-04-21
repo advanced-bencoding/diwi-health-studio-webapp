@@ -3,11 +3,11 @@
 
 {% block content %}
 {% if wrongmno %}
-<div class="alert alert-danger alert-dismissible fade show">
+<div class="alert alert-danger alert-dismissible fade show" id="extra-msg">
   <strong>
     {{wrongmno}}
     </strong>
-  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" id="msg-close"></button>
 </div>
 {% endif %} 
 {% if wrongmail %}
