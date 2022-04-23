@@ -100,7 +100,7 @@ html,body
   box-sizing: border-box;
   color: #fff;
   font-family: "JetBrains Mono",monospace;
-  height: 48px;
+  height: fit-content;
   justify-content: center;
   line-height: 1;
   list-style: none;
